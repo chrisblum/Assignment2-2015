@@ -2,6 +2,7 @@
 var express = require('express');
 var passport = require('passport');
 var InstagramStrategy = require('passport-instagram').Strategy;
+var FitbitStrategy = require('passport-fitbit').Strategy;
 var http = require('http');
 var path = require('path');
 var handlebars = require('express-handlebars');

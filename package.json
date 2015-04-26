@@ -1,8 +1,8 @@
 {
-  "name": "mywebapp",
+  "name": "Assignment 2 - Chris Blum",
   "version": "0.0.1",
-  "author": "Alex Yang, Brian Soe, Purvi Desai",
-  "description": "Assignment 1 for COGS 121",
+  "author": "Chris Blum",
+  "description": "Assignment 2 for COGS 121",
   "scripts": {
     "start": "node app.js"
   },
@@ -18,7 +18,8 @@
     "mongoose": "^4.0.1",
     "mongoose-findorcreate": "^0.1.2",
     "passport": "0.2.1",
-    "passport-instagram": "0.1.2"
+    "passport-instagram": "0.1.2",
+    "passport-fitbit": "*"
   },
   "engines": {
     "node": "0.10.x"
