@@ -94,10 +94,11 @@ passport.use(new InstagramStrategy({
         user.ig_access_token = accessToken;
         user.save();
         process.nextTick(function () {
-          // To keep the example simple, the user's Instagram profile is returned to
-          // represent the logged-in user.  In a typical application, you would want
-          // to associate the Instagram account with a user record in your database,
-          // and return that user instead.
+
+          //
+          // returns user from db
+          //
+
           return done(null, user);
         });
       }
