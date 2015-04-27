@@ -107,6 +107,59 @@ passport.use(new InstagramStrategy({
 ));
 
 
+
+//begin fitbit strategy
+
+passport.use(new FitbitStrategy({
+    consumerKey: FITBIT_CLIENT_ID,
+    consumerSecret: FITBIT_CLIENT_SECRET,
+    callbackURL: FITBIT_CALLBACK_URL
+  },
+  function(accessToken, refreshToken, profile, done) {
+    // asynchronous verification, for effect...
+   models.User.findOne({
+    "fit_id": profile.id
+   }, function(err, user) {
+      if (err) {
+        return done(err); 
+      }
+      
+      //didnt find a user
+      if (!user) {
+        newUser = new models.User({
+          name: profile.displayName, 
+          fit_id: profile.id,
+          fit_access_token: accessToken
+        });
+
+        newUser.save(function(err) {
+          if(err) {
+            console.log(err);
+          } else {
+            console.log('user: ' + newUser.name + " created.");
+          }
+          return done(null, newUser);
+        });
+      } else {
+        //update user here
+        user.fit_access_token = accessToken;
+        user.save();
+        process.nextTick(function () {
+
+          //
+          // returns user from db
+          //
+
+          return done(null, user);
+        });
+      }
+   });
+  }
+));
+
+//end fitbit strategy 
+
+
 //Configures the Template engine
 app.engine('handlebars', handlebars({defaultLayout: 'layout'}));
 app.set('view engine', 'handlebars');
@@ -244,6 +297,24 @@ app.get('/auth/instagram/callback',
   function(req, res) {
     res.redirect('/account');
   });
+
+//fitbit gets
+
+app.get('/auth/fitbit',
+  passport.authenticate('fitbit'),
+  function(req, res){
+    // The request will be redirected to Instagram for authentication, so this
+    // function will not be called.
+  });
+
+app.get('/auth/fitbit/callback', 
+  passport.authenticate('fitbit', { failureRedirect: '/login'}),
+  function(req, res) {
+    res.redirect('/account');
+  });
+
+
+//end fitbit gets
 
 app.get('/logout', function(req, res){
   req.logout();

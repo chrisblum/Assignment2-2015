@@ -6,6 +6,8 @@ var userSchema = mongoose.Schema({
 	"name" : { type: String },
   "ig_id" : { type: String},
 	"ig_access_token" : { type: String },
+	"fit_id" : { type: String},
+	"fit_accesss_token" : { type: String }
 });
 
 exports.User = mongoose.model('User', userSchema);
