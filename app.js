@@ -123,7 +123,7 @@ passport.use(new FitbitStrategy({
       if (err) {
         return done(err); 
       }
-      
+      console.log(user.name + " has logged in!");
       //didnt find a user
       if (!user) {
         newUser = new models.User({
@@ -143,6 +143,7 @@ passport.use(new FitbitStrategy({
       } else {
         //update user here
         user.fit_access_token = accessToken;
+        user.name = profile.displayName;
         user.save();
         process.nextTick(function () {
 
