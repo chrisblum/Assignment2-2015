@@ -65,7 +65,9 @@ d3.json('/igMediaCounts', function(error, data) {
     .attr("x", function(d) { return scaleX(d.username); })
     .attr("width", scaleX.rangeBand())
     .attr("y", function(d) { return scaleY(d.counts.media); })
-    .attr("height", function(d) { return height - scaleY(d.counts.media); });
+    .attr("height", function(d) { return height - scaleY(d.counts.media); })
+    .append("svg:title")
+    .text(function(d) { return d.username + ': ' + d.counts.media + ' photos'; });
 
 //sorting
   d3.select("input").on("change", change);
