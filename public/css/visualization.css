@@ -1,10 +1,17 @@
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  position: relative;
+  width: 960px;
+}
 
 .bar {
   fill: steelblue;
+  fill-opacity: .8;
 }
 
 .bar:hover {
   fill: brown;
+  fill-opacity:1.0;
 }
 
 .axis {
@@ -20,4 +27,10 @@
 
 .x.axis path {
   display: none;
+}
+
+label {
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
