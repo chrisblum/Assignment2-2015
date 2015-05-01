@@ -277,9 +277,86 @@ app.get('/igMediaCounts', ensureAuthenticatedInstagram, function(req, res){
   });
 });
 
+app.get('/igColors', ensureAuthenticatedInstagram, function(req, res){
+  var query  = models.User.where({ ig_id: req.user.ig_id });
+  query.findOne(function (err, user) {
+    if (err) return err;
+    if (user) {
+      Instagram.tags.info({ 
+        name: 'blue',
+        user_id: user.ig_id,
+        access_token: user.ig_access_token,
+        complete: function(data) {
+          // an array of asynchronous functions
+          var asyncTasks = [];
+          var blueCount = data;
+        
+        Instagram.tags.info({ 
+        name: 'red',
+        user_id: user.ig_id,
+        access_token: user.ig_access_token,
+        complete: function(data) {
+
+          var redCount = data;
+
+        Instagram.tags.info({ 
+        name: 'yellow',
+        user_id: user.ig_id,
+        access_token: user.ig_access_token,
+        complete: function(data) {
+
+          var yellowCount = data;
+
+        Instagram.tags.info({ 
+        name: 'green',
+        user_id: user.ig_id,
+        access_token: user.ig_access_token,
+        complete: function(data) {
+
+          var greenCount = data;
+
+        Instagram.tags.info({ 
+        name: 'purple',
+        user_id: user.ig_id,
+        access_token: user.ig_access_token,
+        complete: function(data) {
+
+          var purpleCount = data;
+
+        Instagram.tags.info({ 
+        name: 'white',
+        user_id: user.ig_id,
+        access_token: user.ig_access_token,
+        complete: function(data) {
+
+          var whiteCount = data;
+
+        Instagram.tags.info({ 
+        name: 'black',
+        user_id: user.ig_id,
+        access_token: user.ig_access_token,
+        complete: function(data) {
+
+        var blackCount = data;
+
+
+
+        var counts = [blueCount,redCount,yellowCount,greenCount,purpleCount,whiteCount,blackCount]
+        console.log(counts);
+        res.render('newvisualization', {count: counts});
+        }
+
+        });}});}});}});}});}});}});}});});
+
+
 app.get('/visualization', ensureAuthenticatedInstagram, function (req, res){
   res.render('visualization');
 }); 
+
+app.get('/newvisualization', ensureAuthenticatedInstagram, function (req, res){
+  res.render('newvisualization');
+}); 
+
 
 
 app.get('/c3visualization', ensureAuthenticatedInstagram, function (req, res){
