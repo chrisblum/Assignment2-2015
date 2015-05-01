@@ -411,7 +411,7 @@ app.get('/igColors', ensureAuthenticatedInstagram, function(req, res){
 
         var counts = [blueCount,redCount,yellowCount,greenCount,purpleCount,whiteCount,blackCount]
         console.log(counts);
-        res.render('newvisualization', {counts: counts});
+        res.json('newvisualization', {counts: counts});
         }
 
         });}});}});}});}});}});}});}});});
