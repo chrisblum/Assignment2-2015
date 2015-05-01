@@ -24,15 +24,18 @@
             yCounts,
             xCounts
           ],
-          type: 'area',
-          onmouseover: function () {
+          type: 'area'
+
+        },
+        size: {
+            height:500
+          },
+        onmouseover: function () {
             chart.axis.max(1000000);
           },
-          onmouseout: function() {
+        onmouseout: function() {
             chart.axis.max(7500);
           }
-
-        }
       });
 
 
@@ -43,7 +46,7 @@
 
       setTimeout(function () {
     chart.axis.max(7500);
-}, 2500);
+}, 2000);
 
 
     });
