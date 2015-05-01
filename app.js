@@ -289,7 +289,18 @@ app.get('/igColors', ensureAuthenticatedInstagram, function(req, res){
         complete: function(data) {
           // an array of asynchronous functions
           var asyncTasks = [];
-          var blueCount = data;
+
+          // var blueCount = data.map(function(item) {
+          //   //create temporary json object
+          //   tempJSON = {};
+          //   tempJSON.colorname = item.name;
+          //   tempJSON.number = item.media_count;
+
+          //   //insert json object into image array
+          //   return tempJSON;
+          // });
+
+        var blueCount = data;
         
         Instagram.tags.info({ 
         name: 'red',
@@ -297,7 +308,17 @@ app.get('/igColors', ensureAuthenticatedInstagram, function(req, res){
         access_token: user.ig_access_token,
         complete: function(data) {
 
-          var redCount = data;
+          // var redCount = data.map(function(item) {
+          //   //create temporary json object
+          //   tempJSON = {};
+          //   tempJSON.colorname = item.name;
+          //   tempJSON.number = item.media_count;
+
+          //   //insert json object into image array
+          //   return tempJSON;
+          // });
+        
+        var redCount = data;
 
         Instagram.tags.info({ 
         name: 'yellow',
@@ -305,7 +326,17 @@ app.get('/igColors', ensureAuthenticatedInstagram, function(req, res){
         access_token: user.ig_access_token,
         complete: function(data) {
 
-          var yellowCount = data;
+          // var yellowCount = data.map(function(item) {
+          //   //create temporary json object
+          //   tempJSON = {};
+          //   tempJSON.colorname = item.name;
+          //   tempJSON.number = item.media_count;
+
+          //   //insert json object into image array
+          //   return tempJSON;
+          // });
+
+        var yellowCount = data;
 
         Instagram.tags.info({ 
         name: 'green',
@@ -313,7 +344,16 @@ app.get('/igColors', ensureAuthenticatedInstagram, function(req, res){
         access_token: user.ig_access_token,
         complete: function(data) {
 
-          var greenCount = data;
+          // var greenCount = data.map(function(item) {
+          //   //create temporary json object
+          //   tempJSON = {};
+          //   tempJSON.colorname = item.name;
+          //   tempJSON.number = item.media_count;
+
+          //   //insert json object into image array
+          //   return tempJSON;
+          // });
+        var greenCount = data;
 
         Instagram.tags.info({ 
         name: 'purple',
@@ -321,7 +361,16 @@ app.get('/igColors', ensureAuthenticatedInstagram, function(req, res){
         access_token: user.ig_access_token,
         complete: function(data) {
 
-          var purpleCount = data;
+          // var purpleCount = data.map(function(item) {
+          //   //create temporary json object
+          //   tempJSON = {};
+          //   tempJSON.colorname = item.name;
+          //   tempJSON.number = item.media_count;
+
+          //   //insert json object into image array
+          //   return tempJSON;
+          // });
+        var purpleCount = data;
 
         Instagram.tags.info({ 
         name: 'white',
@@ -329,7 +378,16 @@ app.get('/igColors', ensureAuthenticatedInstagram, function(req, res){
         access_token: user.ig_access_token,
         complete: function(data) {
 
-          var whiteCount = data;
+          // var whiteCount = data.map(function(item) {
+          //   //create temporary json object
+          //   tempJSON = {};
+          //   tempJSON.colorname = item.name;
+          //   tempJSON.number = item.media_count;
+
+          //   //insert json object into image array
+          //   return tempJSON;
+          // });
+        var whiteCount = data;
 
         Instagram.tags.info({ 
         name: 'black',
@@ -337,13 +395,23 @@ app.get('/igColors', ensureAuthenticatedInstagram, function(req, res){
         access_token: user.ig_access_token,
         complete: function(data) {
 
+        // var blackCount = data.map(function(item) {
+        //     //create temporary json object
+        //     tempJSON = {};
+        //     tempJSON.colorname = item.name;
+        //     tempJSON.number = item.media_count;
+
+        //     //insert json object into image array
+        //     return tempJSON;
+        //   });
+
         var blackCount = data;
 
 
 
         var counts = [blueCount,redCount,yellowCount,greenCount,purpleCount,whiteCount,blackCount]
         console.log(counts);
-        res.render('newvisualization', {count: counts});
+        res.render('newvisualization', {counts: counts});
         }
 
         });}});}});}});}});}});}});}});});
