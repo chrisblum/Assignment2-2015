@@ -27,6 +27,25 @@
           type: 'area'
 
         },
+        axis: {
+          x : {
+                label: {
+                  text: 'Users',
+                  position: 'outer-center'
+                }
+          },
+          y: {
+              label : {
+                text: 'Counts',
+                position: 'outer-middle'
+
+              }
+          }
+        },
+        legend: {
+          position: 'right'
+        },
+        
         size: {
             height:500
           },

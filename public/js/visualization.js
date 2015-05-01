@@ -100,6 +100,8 @@ d3.json('/igMediaCounts', function(error, data) {
     transition.select(".x.axis")
         .call(xAxis)
       .selectAll("g")
+        .selectAll("text")
+        .style("text-anchor", "end")
         .delay(delay);
   }
 
