@@ -1,21 +1,23 @@
   var w = 500,                        //width
     h = 500,                            //height
     r = 250,                            //radius
-    color = d3.scale.category20c();     //builtin range of colors
+    // color = d3.scale.category20c();     //builtin range of colors
+    color = d3.scale.ordinal()
+    .range(["#0000FF", "#FF0000", "#FFFF00", "#008000", "#551a8b", "#E6E8FA", "#545454"]);
 
    d3.json('/igColors', function(error, data1) {
 
-    data = [{"label":"Blue", "value":data1.users[0].media_count}, 
-            {"label":"Red", "value":data1.users[1].media_count}, 
-            {"label":"Yellow", "value":data1.users[2].media_count}
+    data = [{"label":"Blue: "+data1.users[0].media_count, "value":data1.users[0].media_count}, 
+            {"label":"Red "+data1.users[1].media_count, "value":data1.users[1].media_count}, 
+            {"label":"Yellow "+data1.users[2].media_count, "value":data1.users[2].media_count}
             , 
-            {"label":"Green", "value":data1.users[3].media_count}
+            {"label":"Green "+data1.users[3].media_count, "value":data1.users[3].media_count}
             , 
-            {"label":"Purple", "value":data1.users[4].media_count}
+            {"label":"Purple "+data1.users[4].media_count, "value":data1.users[4].media_count}
             , 
-            {"label":"White", "value":data1.users[5].media_count}
+            {"label":"White "+data1.users[5].media_count, "value":data1.users[5].media_count}
             , 
-            {"label":"Black", "value":data1.users[6].media_count}];
+            {"label":"Black "+data1.users[6].media_count, "value":data1.users[6].media_count}];
     
     var vis = d3.select("#pie")
         .append("svg:svg")              //create the SVG element inside the <body>
