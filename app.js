@@ -110,53 +110,53 @@ passport.use(new InstagramStrategy({
 
 //begin fitbit strategy
 
-passport.use(new FitbitStrategy({
-    consumerKey: FITBIT_CLIENT_ID,
-    consumerSecret: FITBIT_CLIENT_SECRET,
-    callbackURL: FITBIT_CALLBACK_URL
-  },
-  function(accessToken, refreshToken, profile, done) {
-    // asynchronous verification, for effect...
-   models.User.findOne({
-    "fit_id": profile.id
-   }, function(err, user) {
-      if (err) {
-        return done(err); 
-      }
-      console.log(user.name + " has logged in!");
-      //didnt find a user
-      if (!user) {
-        newUser = new models.User({
-          name: profile.displayName, 
-          fit_id: profile.id,
-          fit_access_token: accessToken
-        });
+// passport.use(new FitbitStrategy({
+//     consumerKey: FITBIT_CLIENT_ID,
+//     consumerSecret: FITBIT_CLIENT_SECRET,
+//     callbackURL: FITBIT_CALLBACK_URL
+//   },
+//   function(accessToken, refreshToken, profile, done) {
+//     // asynchronous verification, for effect...
+//    models.User.findOne({
+//     "fit_id": profile.id
+//    }, function(err, user) {
+//       if (err) {
+//         return done(err); 
+//       }
+//       console.log(user.name + " has logged in!");
+//       //didnt find a user
+//       if (!user) {
+//         newUser = new models.User({
+//           name: profile.displayName, 
+//           fit_id: profile.id,
+//           fit_access_token: accessToken
+//         });
 
-        newUser.save(function(err) {
-          if(err) {
-            console.log(err);
-          } else {
-            console.log('user: ' + newUser.name + " created.");
-          }
-          return done(null, newUser);
-        });
-      } else {
-        //update user here
-        user.fit_access_token = accessToken;
-        user.name = profile.displayName;
-        user.save();
-        process.nextTick(function () {
+//         newUser.save(function(err) {
+//           if(err) {
+//             console.log(err);
+//           } else {
+//             console.log('user: ' + newUser.name + " created.");
+//           }
+//           return done(null, newUser);
+//         });
+//       } else {
+//         //update user here
+//         user.fit_access_token = accessToken;
+//         user.name = profile.displayName;
+//         user.save();
+//         process.nextTick(function () {
 
-          //
-          // returns user from db
-          //
+//           //
+//           // returns user from db
+//           //
 
-          return done(null, user);
-        });
-      }
-   });
-  }
-));
+//           return done(null, user);
+//         });
+//       }
+//    });
+//   }
+// ));
 
 //end fitbit strategy 
 
