@@ -26,9 +26,9 @@ var INSTAGRAM_CALLBACK_URL = process.env.INSTAGRAM_CALLBACK_URL;
 Instagram.set('client_id', INSTAGRAM_CLIENT_ID);
 Instagram.set('client_secret', INSTAGRAM_CLIENT_SECRET);
 // fitbit env stuff
-var FITBIT_CLIENT_ID = process.env.FITBIT_CLIENT_ID;
-var FITBIT_CLIENT_SECRET = process.env.FITBIT_CLIENT_SECRET;
-var FITBIT_CALLBACK_URL = process.env.FITBIT_CALLBACK_URL;
+// var FITBIT_CLIENT_ID = process.env.FITBIT_CLIENT_ID;
+// var FITBIT_CLIENT_SECRET = process.env.FITBIT_CLIENT_SECRET;
+// var FITBIT_CALLBACK_URL = process.env.FITBIT_CALLBACK_URL;
 
 
 //connect to database
