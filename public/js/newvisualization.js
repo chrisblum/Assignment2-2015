@@ -19,6 +19,7 @@
             , 
             {"label":"Black "+data1.users[6].media_count, "value":data1.users[6].media_count}];
     
+            var total = data1.users[0].media_count+data1.users[1].media_count+data1.users[2].media_count+data1.users[3].media_count+data1.users[4].media_count+data1.users[5].media_count+data1.users[0].media_count;
     var vis = d3.select("#pie")
         .append("svg:svg")              //create the SVG element inside the <body>
         .data([data])                   //associate our data with the document
@@ -41,7 +42,9 @@
 
         arcs.append("svg:path")
                 .attr("fill", function(d, i) { return color(i); } ) //set the color for each slice to be chosen from the color function defined above
-                .attr("d", arc);                                    //this creates the actual SVG path using the associated data (pie) with the arc drawing function
+                .attr("d", arc) 
+                .append("svg:title")
+            .text(function(d) { return d.value + ' tags - ' + ((d.value/total)*(100))+'%'; });                                   //this creates the actual SVG path using the associated data (pie) with the arc drawing function
 
         arcs.append("svg:text")                                     //add a label to each slice
                 .attr("transform", function(d) {                    //set the label's origin to the center of the arc
