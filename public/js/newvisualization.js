@@ -1,6 +1,6 @@
-  var w = 300,                        //width
-    h = 300,                            //height
-    r = 100,                            //radius
+  var w = 500,                        //width
+    h = 500,                            //height
+    r = 250,                            //radius
     color = d3.scale.category20c();     //builtin range of colors
 
    d3.json('/igColors', function(error, data1) {
@@ -17,7 +17,7 @@
             , 
             {"label":"Black", "value":data1.users[6].media_count}];
     
-    var vis = d3.select("body")
+    var vis = d3.select("#pie")
         .append("svg:svg")              //create the SVG element inside the <body>
         .data([data])                   //associate our data with the document
             .attr("width", w)           //set the width and height of our visualization (these will be attributes of the <svg> tag
