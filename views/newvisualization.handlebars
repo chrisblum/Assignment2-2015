@@ -1,4 +1,12 @@
 <script src="js/newvisualization.js"></script>
+
+<script> 
+setTimeout(function(){
+ document.getElementById("loading").style.display = "none";
+}, 2000);
+
+</script>
+
 <style>
 
 body {
@@ -14,8 +22,11 @@ body {
 <center>
 <div><h2>Popularity of Colors on Instagram</h2></div>
 <div><h4>Aggregated from Instagram #Hashtags</h4></div>
-<div id="pie">
+<div id="pie" style="z-index:2;">
 
+</div>
+<div style="z-index:1;margin-top:100px;" id="loading">
+<h4>Loading...Please Wait</h4>
 </div>
 
 </center>
